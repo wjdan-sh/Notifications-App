@@ -22,8 +22,8 @@
 
     <Button
         android:id="@+id/btn"
-        android:layout_width="184dp"
-        android:layout_height="70dp"
+        android:layout_width="190dp"
+        android:layout_height="66dp"
         android:backgroundTint="#B4C7B9E1"
         android:text="Show notification"
         app:layout_constraintBottom_toBottomOf="parent"
