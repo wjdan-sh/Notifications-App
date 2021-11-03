@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 
@@ -30,18 +31,23 @@ class MainActivity : AppCompatActivity() {
 
             var notification = ed.text.toString()
 
-            var notificationChannel = NotificationChannel(channelId,description,NotificationManager.IMPORTANCE_HIGH)
-            notificationManager.createNotificationChannel(notificationChannel)
+            if (notification.isNotEmpty()){
+                var notificationChannel = NotificationChannel(channelId,description,NotificationManager.IMPORTANCE_HIGH)
+                notificationManager.createNotificationChannel(notificationChannel)
 
-            var builder = Notification.Builder(this, channelId)
-                .setSmallIcon(R.drawable.ic_notification)
-                .setContentTitle("Notification")
-                .setContentText(notification)
+                var builder = Notification.Builder(this, channelId)
+                    .setSmallIcon(R.drawable.ic_notification)
+                    .setContentTitle("Notification")
+                    .setContentText(notification)
 
                 notificationManager.notify(1234, builder.build())
 
-            ed.text.clearSpans()
-            ed.clearFocus()
+                ed.text.clearSpans()
+                ed.clearFocus()
+
+            }else{
+                Toast.makeText(this, "please enter something !", Toast.LENGTH_SHORT).show()
+            }
 
         }
 
